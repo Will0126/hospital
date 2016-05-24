@@ -4,7 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-  <!--字符集过滤器-->
+
+  <!--Spring字符集过滤器-->
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -22,8 +23,19 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <!--OpenSessionInView-->
+  <filter>
+    <filter-name>OpenSessionInView</filter-name>
+    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+  </filter>
 
-  <!--struts2中央控制器-->
+  <filter-mapping>
+    <filter-name>OpenSessionInView</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <!--Struts2的中央控制器-->
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -33,27 +45,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-
-  <!--openSessionInView  为了解决Hibernate的session延时加载-->
-  <filter>
-    <filter-name>OpenSessionInView</filter-name>
-    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>OpenSessionInView</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-  <!--配置spring容器初始化监听器-->
+  <!--配置Spring容器初始化监听器-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath*:applicationContext*.xml</param-value>
   </context-param>
-
-
 
 
 </web-app>

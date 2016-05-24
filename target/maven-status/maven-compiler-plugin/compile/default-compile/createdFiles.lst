@@ -1,0 +1,5 @@
+com\kaishengit\pojo\Role.class
+com\kaishengit\action\HomeAction.class
+com\kaishengit\dao\UserDao.class
+com\kaishengit\service\UserService.class
+com\kaishengit\pojo\User.class
